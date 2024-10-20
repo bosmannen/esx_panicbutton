@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Player</title>
+</head>
+<body>
+    <audio id="noodknopSound" src="../sounds/noodknop.wav" preload="auto"></audio>
+
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data.action === "playSound") {
+                const soundElement = document.getElementById("noodknopSound");
+                soundElement.currentTime = 0; // Reset the sound to the start
+                soundElement.play().catch(function(error) {
+                    console.error("Error playing sound:", error); // Log any errors that occur when playing the sound
+                });
+                console.log("Sound played"); // Debug print
+            }
+        });
+    </script>
+</body>
+</html>
